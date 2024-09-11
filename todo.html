@@ -1,0 +1,28 @@
+<head>
+    <title>Ту Ду</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+
+<body>  
+  <div class="header">
+    <button class="JSONBtn" onclick="download(exportJSON(), 'tasks.json', 'text/plain');">Сохранить</button>
+    <button class="JSONBtn" id="uploadBtn">Открыть</button>
+
+    <input type="file" id="upload" onchange="upload(this)" title=" ">
+    <h2>Список ТуДушек</h2>
+    <input type="text" id="newTaskText" placeholder="Заметка">
+    <button class="addBtn" onclick="addTask()">+</button>
+    
+  </div>  
+  
+
+  <ul id="taskList">
+    <li class = "done" > Пресс качат </li>
+    <li> бегит </li>
+    <li> турник </li>
+    <li> анжуманя </li> 
+  </ul>
+</body>
+
+<script src="./todo.js"></script>
+<script src="./todoJSON.js"></script>

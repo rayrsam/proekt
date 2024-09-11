@@ -1,0 +1,114 @@
+ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 30px;
+}
+
+ul li {
+    list-style-type: none;
+    width: 270px;
+    height: 270px;
+    background: #ffee00;
+    font-size: 18px;
+    word-wrap: break-word;
+    vertical-align: bottom;
+    padding: 30px;
+    overflow: auto;
+    border-radius: 10px;
+}   
+
+ul li:hover{
+    background: #eada00;
+}
+
+.viewBtn {  
+    float: right;   
+    font-size: 18px;
+    border: 0px;
+    background-color: rgba(255, 0, 0, 0);
+  }
+  
+.delBtn:hover {
+    background-color: red;
+    color: white;
+  }
+
+.edBtn:hover {
+  background-color: greenyellow;
+    color: white;
+}
+
+
+  .header {
+    background-color: #ffee00;
+    padding: 30px 40px;
+    color: black;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+  
+  .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: right;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 0px;
+    border-radius: 10px;
+  }
+  
+  .addBtn:hover {
+    background-color: #bbb;
+  }
+
+  .JSONBtn {  
+    height: 40px;
+    padding: 10px;
+    margin-top: -21px;
+    width: 12.5%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 0px;
+    border-radius: 10px;
+  }
+  
+  .JSONBtn:hover {
+    background-color: #bbb;
+  }
+
+  ul li.done {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+  }
+
+  input[type="file"]{
+    display:none;
+    }
