@@ -5,24 +5,24 @@
 
 <body>  
   <div class="header">
-    <button class="JSONBtn" onclick="download(exportJSON(), 'tasks.json', 'text/plain');">Сохранить</button>
+    <button class="JSONBtn" onclick="getTasks()">Сохранить</button>
     <button class="JSONBtn" id="uploadBtn">Открыть</button>
 
     <input type="file" id="upload" onchange="upload(this)" title=" ">
     <h2>Список ТуДушек</h2>
     <input type="text" id="newTaskText" placeholder="Заметка">
-    <button class="addBtn" onclick="addTask()">+</button>
+    <button class="addBtn" onclick="onAddTask()">+</button>
     
   </div>  
   
 
   <ul id="taskList">
-    <li class = "done" > Пресс качат </li>
-    <li> бегит </li>
-    <li> турник </li>
-    <li> анжуманя </li> 
+    
   </ul>
 </body>
 
+<script src="./task.js"></script>
 <script src="./todo.js"></script>
+<script src="./todoView.js"></script>
 <script src="./todoJSON.js"></script>
+<script src="./todoAPI.js"></script>

@@ -1,49 +1,47 @@
-taskList = document.querySelectorAll('ul > li');
-for (i = 0; i < taskList.length; i++) setTaskView(taskList[i]);
+taskList = new TaskList
 
 document.querySelector("#uploadBtn").addEventListener("click", ()=>{
     document.querySelector("#upload").click();
 })
 
-function addTask(){
-    task = document.createElement("li");
+function notifyChanges(){
+
+    taskListView = document.getElementById("taskList")
+
+    var childElements = document.querySelector("ul");
+    var delChild = childElements.lastChild;
+    while (delChild) {
+        childElements.removeChild(delChild);
+        delChild = childElements.lastChild;
+    }
+
+    taskList.tasks.forEach(task => {
+        
+        taskView = document.createElement("li");
+        
+        taskView.tag = task.id
+        if (task.status == -1) taskView.classList.add("done")
+        
+        addDelBtn(taskView)
+        addEdBtn(taskView)
+        addTagBtn(taskView)
+        AddDoneBtn(taskView)
+
+        taskView.appendChild(document.createTextNode(task.text));
+    
+        taskListView.appendChild(taskView); 
+
+    });
+}
+
+function onAddTask(){
     input = document.getElementById("newTaskText");
-    taskText = input.value != "" ? document.createTextNode(input.value) : document.createTextNode("Пустая заметка")
-    task.appendChild(taskText);
-    document.getElementById("taskList").appendChild(task);
+    taskText = input.value != "" ? input.value : "Пустая заметка"
     input.value = "";
-    setTaskView(task)
+
+    taskList.addTask(taskText)
+    notifyChanges()
 }
 
-function addEdBtn (task){
-    edBtn = document.createElement("Button");
-    edBtn.appendChild(document.createTextNode("✎"));
-    edBtn.classList.add("viewBtn");
-    edBtn.classList.add("edBtn");
-    task.appendChild(edBtn);
-    edBtn.onclick = function() {
-        let defValue = this.parentElement.firstChild.textContent;
-        let newValue = prompt("Новый текст", defValue);
-        this.parentElement.firstChild.textContent = (newValue != null) ? newValue : defValue;
-    }
-}
 
-function addDelBtn(task){
-    delBtn = document.createElement("Button");
-    delBtn.appendChild(document.createTextNode("X"));
-    delBtn.classList.add("viewBtn");
-    delBtn.classList.add("delBtn");
-    task.appendChild(delBtn);
-    delBtn.onclick = function() {
-        this.parentElement.style.display = "none";
-    }
-}
 
-function setTaskView(task){
-      
-    addDelBtn(task);
-    addEdBtn(task);
-    task.addEventListener('click', function(ev) {
-        ev.target.classList.toggle("done");
-    })
-}

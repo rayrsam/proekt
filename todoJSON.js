@@ -1,27 +1,9 @@
-class Task{
-    constructor(text, status){
-        this.text = text;
-        this.status = status
-    }
-}
+document.querySelector("#uploadBtn").addEventListener("click", ()=>{
+    document.querySelector("#upload").click();
+})
 
-//exportJSON();
-
-function exportJSON(){
-    let task, text, status;
-    let tasks = [];
-
-    taskList = document.querySelectorAll('ul > li');
-    for (i = 0; i < taskList.length; i++) {
-        if (taskList[i].style.display != "none") {
-            text = taskList[i].firstChild.textContent;
-            status = taskList[i].classList.contains("done") ? 1 : 0;
-            task = new Task(text, status);
-            tasks.push(task);
-            }   
-    }
-
-    return JSON.stringify(tasks);
+function onDownload(){
+    download(JSON.stringify(taskList.tasks), 'tasks.json', 'text/plain');
 }
 
 function download(content, fileName, contentType) {
@@ -39,25 +21,14 @@ function upload(input){
     
     reader.readAsText(file);
     reader.onload = function() {
-
-        taskList = document.querySelectorAll('ul > li');
-        for (i = 0; i < taskList.length; i++) {
-          taskList[i].style.display = "none";
-        }
-
-        let newTasks = JSON.parse(reader.result);
-        let task;
-
-        for (i = 0; i < taskList.length; i++){
-            task = document.createElement("li");
-            taskText = document.createTextNode(newTasks[i].text);
-            task.appendChild(taskText);
-            document.getElementById("taskList").appendChild(task);
-            if (newTasks[i].status == 1) task.classList.add("done")
-            setTaskView(task);
-        }
+        taskList.tasks = []
+        taskList.tasks = JSON.parse(reader.result);
+        notifyChanges()
     };
+
     reader.onerror = function() {
         console.log(reader.error);
     };
 }
+
+
