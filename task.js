@@ -19,11 +19,10 @@ class TaskList{
             return v.toString(16);
         }); 
     }
-    
 
-    addTask (text){
-        var id = this.uuidv4()
-        var task = new Task(id, text, "", 1)
+    addTask (id){
+        //var id = this.uuidv4()
+        var task = new Task(id, "Пустая Заметка", [""], 1)
         this.tasks.push(task)
         return task
     }
@@ -39,6 +38,7 @@ class TaskList{
             task.id === id)
          
         task.text = text
+        return task
     }
 
     editTaskStatus (id){
@@ -46,12 +46,16 @@ class TaskList{
             task.id === id)
          
         task.status *= -1
+        return task
     }
 
     editTaskTags (id, tag){
         var task = this.tasks.find(task =>
             task.id === id)
          
-        task.tag = tag
+        task.tag = tag.split('_')
+        return task
     }
+
+    
 }

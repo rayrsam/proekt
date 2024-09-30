@@ -5,21 +5,34 @@
 
 <body>  
   <div class="header">
-    <button class="JSONBtn" onclick="getTasks()">Сохранить</button>
-    <button class="JSONBtn" id="uploadBtn">Открыть</button>
-
+    <!--
+    <button class="JSONBtn" onclick="setDomain()">⚙</button>
+    <button class="JSONBtn" onclick="getTasks('')">Обновить</button>
+    -->
     <input type="file" id="upload" onchange="upload(this)" title=" ">
-    <h2>Список ТуДушек</h2>
-    <input type="text" id="newTaskText" placeholder="Заметка">
-    <button class="addBtn" onclick="onAddTask()">+</button>
+    <h2>Заметки</h2>
+    <input type="text" id="tags" placeholder='Тэги (через "_")'>
+    <button class="addBtn" onclick="createTask()">+</button>
+
+    <button class="addBtn" id="search"
+      onclick="getTasks(document.querySelector('#tags').value)">
+    🔍</button>
     
   </div>  
   
 
-  <ul id="taskList">
-    
-  </ul>
+  <ul id="taskList"></ul>
 </body>
+
+<script>
+document.getElementById("tags")
+  .addEventListener("keyup", function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+      document.getElementById("search").click();
+  }
+});
+</script>
 
 <script src="./task.js"></script>
 <script src="./todo.js"></script>

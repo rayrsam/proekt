@@ -59,6 +59,7 @@ ul li:hover{
     border: none;
     border-radius: 0;
     width: 75%;
+    height: 40px;
     padding: 10px;
     float: left;
     font-size: 16px;
@@ -67,7 +68,8 @@ ul li:hover{
   
   .addBtn {
     padding: 10px;
-    width: 25%;
+    width: 12.5%;
+    height: 40px;
     background: #d9d9d9;
     color: #555;
     float: right;

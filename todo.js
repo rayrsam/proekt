@@ -1,9 +1,5 @@
 taskList = new TaskList
 
-document.querySelector("#uploadBtn").addEventListener("click", ()=>{
-    document.querySelector("#upload").click();
-})
-
 function notifyChanges(){
 
     taskListView = document.getElementById("taskList")
@@ -34,12 +30,8 @@ function notifyChanges(){
     });
 }
 
-function onAddTask(){
-    input = document.getElementById("newTaskText");
-    taskText = input.value != "" ? input.value : "Пустая заметка"
-    input.value = "";
-
-    taskList.addTask(taskText)
+function onAddTask(id){
+    taskList.addTask(id)
     notifyChanges()
 }
 

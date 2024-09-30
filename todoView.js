@@ -6,6 +6,7 @@ function addDelBtn(taskView){
 
     delBtn.onclick = function(){
         taskList.deleteTask(taskView.tag)
+        deleteTask(taskView.tag)
         notifyChanges()
     }
 
@@ -22,10 +23,11 @@ function addEdBtn (taskView){
     edBtn.onclick = function() {
         taskText = this.parentElement.lastChild.textContent
         defValue = taskText
-        let newValue = prompt("Новый текст", defValue);
+        let newValue = prompt("Редактировать текст", defValue);
         if (newValue != null){
             taskText = newValue   
-            taskList.editTaskText(taskView.tag, taskText)
+            task = taskList.editTaskText(taskView.tag, taskText)
+            updateTask(task)
             notifyChanges()
         }
     }
@@ -40,7 +42,8 @@ function AddDoneBtn(taskView){
     doneBtn.classList.add("edBtn");
 
     doneBtn.onclick = function(){
-        taskList.editTaskStatus(taskView.tag)
+        task = taskList.editTaskStatus(taskView.tag)
+        updateTask(task)
         notifyChanges()
     }
 
@@ -58,9 +61,10 @@ function addTagBtn(taskView){
             task.id === taskView.tag
         )).tag
         defValue = taskTag
-        let newValue = prompt("Новый текст", defValue);
+        let newValue = prompt('Редактировать теги (через "_")', defValue);
         if (newValue != null){   
-            taskList.editTaskTags(taskView.tag, newValue)
+            task = taskList.editTaskTags(taskView.tag, newValue)
+            updateTask(task)
         }
     }
 
