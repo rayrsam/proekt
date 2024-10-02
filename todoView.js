@@ -60,7 +60,7 @@ function addTagBtn(taskView){
         taskTag = (taskList.tasks.find(task => 
             task.id === taskView.tag
         )).tag
-        defValue = taskTag
+        defValue = taskTag.join("_")
         let newValue = prompt('Редактировать теги (через "_")', defValue);
         if (newValue != null){   
             task = taskList.editTaskTags(taskView.tag, newValue)
